@@ -9,6 +9,7 @@ langchain-openai = "*"
 loguru = "*"
 python-dotenv = "*"
 langchain-community = "*"
+streamlit = "*"
 
 [dev-packages]
 
