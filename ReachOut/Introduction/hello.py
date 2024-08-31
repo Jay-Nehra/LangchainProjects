@@ -10,6 +10,19 @@ from ReachOut.output_parsers.output_parsers import (
 
 
 def retrieve_information(filename: str) -> str:
+    """
+    Reads the content of a given file.
+
+    Args:
+        filename (str): The path to the file to read.
+
+    Returns:
+        str: The content of the file.
+
+    Raises:
+        FileNotFoundError: If the file does not exist.
+    """
+    
     filepath = Path(filename)
 
     if filepath.is_file():
@@ -22,6 +35,21 @@ def retrieve_information(filename: str) -> str:
 
 
 def LLM_profile_summary(url: str = "", local: bool = True):
+    """
+    This function uses the Langchain agents to parse the linkedIn profile data from a gist
+    and then uses that data to craft a personalized summary introduction of this person and also provides two interesting facts from the given information.
+
+    The function is a wrapper around the `linkedIn_scrap` function which scrapes the linkedIn
+    profile data from a gist and the `profile_summary_output_parser` which parses the output
+    of the LLM into a pydantic model.
+
+    Args:
+        url (str): The gist url which contains the linkedIn profile data. Defaults to "".
+        local (bool): If the data should be scraped from a local file or from the gist. Defaults to True.
+
+    Returns:
+        str: The generated summary introduction and interesting facts about the person.
+    """
     if local:
         file = "ReachOut/linkedIn_profile_data/JAYANT_NEHRA.json"
         context = retrieve_information(file)
@@ -119,6 +147,19 @@ def craft_personalized_reachout_message(profile_summary: str, purpose: str) -> s
 
 
 def create_personalized_reachout(url: str, purpose: str, local: bool = True) -> str:
+    """
+    Given a LinkedIn Profile URL and the purpose of the reachout, this function returns a personalized reachout message.
+    This function is a wrapper around the `LLM_profile_summary` and `craft_personalized_reachout_message` functions.
+    The output is a string which is the personalized reachout message.
+
+    Args:
+        url (str): The LinkedIn Profile URL.
+        purpose (str): The purpose of the reachout.
+        local (bool, optional): If the data should be scraped from a local file or from the gist. Defaults to True.
+
+    Returns:
+        str: The personalized reachout message.
+    """
     profile_summary_response = LLM_profile_summary(url=url, local=local)
     profile_summary = profile_summary_response
     # print(type(profile_summary))

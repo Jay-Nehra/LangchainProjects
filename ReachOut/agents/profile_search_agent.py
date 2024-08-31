@@ -14,6 +14,13 @@ load_dotenv()
 
 
 def profile_url_search(persons_detail: str) -> str:
+    """
+    This function takes a string of the person's full name and returns a string of their LinkedIn profile URL.
+    
+    The function uses the `ChatOpenAI` model to generate a prompt, which is then used to search for the person's LinkedIn profile URL using Google.
+    
+    The output of this function is a string of the LinkedIn profile URL for the specified person.
+    """
     model = ChatOpenAI(
         model="gpt-3.5-turbo",
         temperature=0.2,

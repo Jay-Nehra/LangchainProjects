@@ -22,6 +22,13 @@ def reachOut_person(name: str, purpose: str) -> dict:
 
 
 def main():
+    """
+    This is the main entrypoint of the Streamlit Application.
+    It takes input of the name of the person and the purpose of the interaction.
+    It then uses the `reachOut_person` function to generate a reachout message based on the LinkedIn profile summary and the purpose of the interaction.
+    The generated message is displayed as a subject and a message body.
+    If there is an error during the message generation, it is displayed as an error message.
+    """
     st.title("Personalized ReachOut Message Generator")
     st.write(
         "This application helps draft a personalized reachout message based on the LinkedIn profile summary and the purpose of the interaction."
