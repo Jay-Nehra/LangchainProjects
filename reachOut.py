@@ -2,7 +2,7 @@
     This is the main entrypoint for the `reachout` agent. The idea is to use the Langchain agents to parse the profile details and then use those details and your objectives to craft a personal reachout message for that person.
 """
 
-from Introduction.hello import create_personalized_reachout
+from ReachOut.Introduction.hello import create_personalized_reachout
 from ReachOut.agents.profile_search_agent import profile_url_search
 from dotenv import load_dotenv
 from pprint import pprint

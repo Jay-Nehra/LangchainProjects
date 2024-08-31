@@ -1,6 +1,6 @@
 import streamlit as st
 from dotenv import load_dotenv
-from Introduction.hello import create_personalized_reachout
+from ReachOut.Introduction.hello import create_personalized_reachout
 from ReachOut.agents.profile_search_agent import profile_url_search
 
 load_dotenv()
